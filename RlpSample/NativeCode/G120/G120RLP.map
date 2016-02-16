@@ -1,0 +1,102 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+task                0x20              NativeCode.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+SDRAM            0xa0f00000         0x000ffffc         xw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/yagarto-20121222/bin/../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/lib/thumb/v7m\libc.a
+LOAD c:/yagarto-20121222/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb/v7m\libgcc.a
+LOAD NativeCode.o
+START GROUP
+LOAD c:/yagarto-20121222/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb/v7m\libgcc.a
+LOAD c:/yagarto-20121222/bin/../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/lib/thumb/v7m\libc.a
+END GROUP
+                0x00000000                . = ALIGN (0x4)
+
+.text           0xa0f00000      0x148
+ *(.text)
+ .text          0xa0f00000      0x148 NativeCode.o
+                0xa0f00000                TestFungsi
+                0xa0f00080                TaskCallback
+                0xa0f000f4                StartTask
+
+.glue_7         0xa0f00148        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0xa0f00148        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0xa0f00148        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0xa0f00148        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0xa0f00148        0x0
+ .iplt          0x00000000        0x0 NativeCode.o
+
+.rel.dyn        0x00000000        0x0
+ .rel.iplt      0x00000000        0x0 NativeCode.o
+                0x00000000                . = ALIGN (0x4)
+
+.rodata
+ *(.rodata)
+                0x00000000                . = ALIGN (0x4)
+
+.data           0xa0f00148        0x0
+ *(.data)
+ .data          0xa0f00148        0x0 NativeCode.o
+
+.igot.plt       0xa0f00148        0x0
+ .igot.plt      0x00000000        0x0 NativeCode.o
+                0xa0f00148                . = ALIGN (0x4)
+
+.bss            0xa0f00148       0x20
+                0xa0f00148                __bss_start__ = .
+ *(.bss)
+ .bss           0xa0f00148        0x0 NativeCode.o
+                0xa0f00148                __bss_end__ = .
+ COMMON         0xa0f00148       0x20 NativeCode.o
+                0xa0f00148                task
+                0xa0f00168                end = .
+OUTPUT(./G120RLP.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x520
+ .debug_info    0x00000000      0x520 NativeCode.o
+
+.debug_abbrev   0x00000000      0x13d
+ .debug_abbrev  0x00000000      0x13d NativeCode.o
+
+.debug_loc      0x00000000       0xa8
+ .debug_loc     0x00000000       0xa8 NativeCode.o
+
+.debug_aranges  0x00000000       0x20
+ .debug_aranges
+                0x00000000       0x20 NativeCode.o
+
+.debug_line     0x00000000       0x7e
+ .debug_line    0x00000000       0x7e NativeCode.o
+
+.debug_str      0x00000000      0x2c3
+ .debug_str     0x00000000      0x2c3 NativeCode.o
+                                0x2d7 (size before relaxing)
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 NativeCode.o
+                                 0x12 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 NativeCode.o
+
+.debug_frame    0x00000000       0x6c
+ .debug_frame   0x00000000       0x6c NativeCode.o
